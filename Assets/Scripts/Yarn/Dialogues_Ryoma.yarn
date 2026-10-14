@@ -4,6 +4,8 @@
 
 <<if $dialogPhase == "start" or $dialogPhase == "">>
     <<jump Start_Ryoma>>
+<<elseif $dialogPhase == "repeat">>
+    <<jump Repeat>>
 <<elseif $dialogPhase == "quest_taken">>
     <<jump Quest_Taken_Ryoma>>
 <<elseif $dialogPhase == "quest_taken2">>
@@ -43,7 +45,18 @@ title: Start_Ryoma
                                 <<jump Start_Ryoma_2>>
                                 <<cam_move NPC_Cam_Rig "return">>
                             -> Leave.    
+                                <<dialogPhaseGetter2 NPC "repeat">>
                                 <<cam_move NPC_Cam_Rig "return">>               
+===
+
+title: Repeat
+---
+Ryoma: ...what. Why not do your own business?
+    -> I'm sorry for staying in front of you.
+        Ryoma: ...don't need to apologize.
+        Ryoma: Anyway, I'm bored. I want to play tennis...
+            -> Then play it.
+                <<jump Start_Ryoma_2>>
 ===
 
 title: Start_Ryoma_2
