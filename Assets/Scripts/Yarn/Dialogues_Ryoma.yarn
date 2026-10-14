@@ -51,6 +51,7 @@ title: Start_Ryoma
 
 title: Repeat
 ---
+<<cam_move NPC_Cam_Rig "NPC">>
 Ryoma: ...what. Why not do your own business?
     -> I'm sorry for staying in front of you.
         Ryoma: ...don't need to apologize.

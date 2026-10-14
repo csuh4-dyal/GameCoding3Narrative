@@ -12,6 +12,7 @@ You: (Of course there is a password...I should ask Ryoma about it.)
 title: PC_Unlocked
 ---
 <<turnOnPC PC>>
+PC: ...
 PC: 'T-R-E-M-O-R'
 PC: 'Logging in as Ryoga...'
 You: (What a...unique taste for password.)
