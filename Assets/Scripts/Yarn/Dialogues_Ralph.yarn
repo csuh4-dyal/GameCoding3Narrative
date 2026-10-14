@@ -1,0 +1,133 @@
+title: Dialogues_Ralph
+---
+<<declare $visitedYet = false>>
+<<if $dialogPhase == "start" or $dialogPhase == "">>
+    <<jump Start>>
+<<elseif $dialogPhase == "casual">>
+    <<jump Casual>>
+<<elseif $dialogPhase == "repeat">>
+    <<jump Quest_taken2_repeat>>
+<<elseif $dialogPhase == "quest_taken">>
+    <<jump Quest_taken>>
+<<elseif $dialogPhase == "quest_taken2">>
+    <<jump Quest_taken2>>
+<<elseif $dialogPhase == "quest_complete">>
+    <<jump Quest_Complete>>
+<<elseif $dialogPhase == "quest_complete_return">>
+    <<jump Quest_Complete_Return>>
+<<else>>
+    Ralph: What the. The current phase: {$dialogPhase} . Do your job bro.
+<<endif>>
+===
+
+title: Start
+---
+<<set $visitedYet to true>>
+<<cam_move NPC_Cam_Rig "NPC">>
+???: Oh, hey. Good to see you there.
+Ralph: I am Ralph. I'm just chilling here with my book.
+Ralph: It's called 'Dead Poets Society'...have you heard of it? It's pretty insteresting.
+<<cam_move NPC_Cam_Rig "PC">>
+    -> I have.
+            Ralph: That's nice to hear. I haven't seen people reading books today...
+            Ralph: If you don't mind, I'd like to have a talk about the book with you someday.
+                <<jump Start_2>>
+    -> Never heard of.
+            Ralph: I see. That's fine. Not a lot of people knows about it today.
+            Ralph: But it's a pretty good book. Reading it makes me to look back at my youth...
+                <<jump Start_2>>
+        
+===
+
+title: Start_2
+---
+Ralph: Well, I am pleased to meet you. Today is pretty chill, so feel free to ask me anything.
+<<set $dialogPhase = "casual">>
+<<dialogPhaseGetter NPC "casual">>
+<<cam_move NPC_Cam_Rig "return">>
+===
+
+title: Casual
+---
+<<cam_move NPC_Cam_Rig "npc">>
+Ralph: Hey there. What's going on?
+    -> Are you living in the house?
+        Ralph: I don't. This place is my friend's house. 
+        Ralph: He went out to his job, so I'm taking care of his young brother...
+        Ralph: But since he doesn't go out often and rarely causes trouble, I decided myself to be out and get some sunshine.
+        <<cam_move NPC_Cam_Rig "return">>
+    -> What do you do?
+        Ralph: I am a high schooler, senior. I just finished applying to colleges I want to go.
+        Ralph: It was tough to take care of both college app and tennis...but it went well, I think.
+            -> You play tennis?
+                Ralph: I did. I was actually the captain of the US national team for U-17 tornament...
+                Ralph: Our team went up to semi-finals, but lost against team Spain, ending in the 3rd place.
+                Ralph: More to tell, the brothers living in this house were also tennis players.
+                Ralph: They were both in our team, but the older one left for team Spain, and the younger left for team Japan.
+                <<cam_move NPC_Cam_Rig "return">>
+    -> Nothing.
+        Ralph: Seems you're also free. Let me know if you wanna talk about books.
+        <<cam_move NPC_Cam_Rig "return">>
+===
+
+title: Quest_taken
+---
+<<cam_move NPC_Cam_Rig "npc">>
+Ralph: Hey there. What's going on?
+    -> Do you know the password for the pc in the home?
+        Ralph: I do...but what's up with it?
+            -> Need for opening the closet.
+                Ralph: Does Ryoma wants something from inside? Man...
+                Ralph: He could've just ask me for...
+                <<dialogPhaseGetter NPC "quest_taken2">>
+                <<jump Quest_taken2>>
+                <<cam_move NPC_Cam_Rig "return">>
+===
+
+title: Quest_taken2
+---
+Ralph: But you seem pretty trustable. I'll give you the password, make sure you only search for the closet lock.
+Ralph: It's 'TREMOR.'
+<<dialogPhaseGetter NPC "repeat">>
+<<cam_move NPC_Cam_Rig "return">>
+===
+
+title: Quest_taken2_repeat
+---
+<<cam_move NPC_Cam_Rig "npc">>
+Ralph: Did you forgot the password?
+Ralph: Haha, that's ok. The password is 'TREMOR.' All capitalized. 
+<<cam_move NPC_Cam_Rig "return">>
+===
+
+title: Quest_Complete
+---
+<<cam_move NPC_Cam_Rig "npc">>
+Ralph: So, did you unlocked the closet? What's up with that?
+    -> There was a tennis ball.
+    Ralph: Oh...seems Ryoma was bored.
+    Ralph: Did he told you about playing tennis with me?
+    Ralph: Well, if he wants, there's no reason for me to hesitate.
+    <<dialogPhaseGetter NPC "quest_complete_return">>
+    <<cam_move NPC_Cam_Rig "return">>
+===
+
+title: Quest_Complete_Return
+---
+<<cam_move NPC_Cam_Rig "npc">>
+Ralph: Do you still have any question?
+    -> The hoodie...
+        Ralph: Yes, it's the star-spangled banner.
+        Ralph: In the honor and loyalty to the homeland, I always wear them.
+        <<cam_move NPC_Cam_Rig "return">>
+    -> What's up with the brothers?
+        Ralph: They might be loose and slacky...but they were our aces in team US.
+        Ralph: Even when both left...they carried the whole team to the apex rank.
+        Ralph: You won't know it in the first, but they actually get along pretty well.
+        Ralph: Ryoga...he cares alot of his brother. Don't know if Ryoma knows that.
+        Ralph: Casue he always works hard under Ryoma's sight, haha.
+        <<cam_move NPC_Cam_Rig "return">>
+    -> Nothing, see ya.
+        Ralph: See you in the tennis court, then.
+        <<cam_move NPC_Cam_Rig "return">>
+===

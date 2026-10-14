@@ -1,0 +1,24 @@
+﻿title: Monologue_PC
+---
+===
+
+title: PC_Locked
+---
+PC: "Enter Password"
+You: (Of course there is a password...I should ask Ryoma about it.)
+<<unlockPlayerFromPC PC>>
+===
+
+title: PC_Unlocked
+---
+<<turnOnPC PC>>
+PC: 'T-R-E-M-O-R'
+PC: 'Logging in as Ryoga...'
+You: (What a...unique taste for password.)
+You: ...
+You: ...
+PC: ('pw.txt')
+PC: (closet: 1224)
+You: ...Christmas Eve for the password, huh.
+<<unlockPlayerFromPC PC>>
+===

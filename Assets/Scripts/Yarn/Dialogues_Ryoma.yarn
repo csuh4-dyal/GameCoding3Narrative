@@ -1,0 +1,144 @@
+﻿title: Dialogues_Ryoma
+---
+<<declare $visitedYetRyoma = false>>
+
+<<if $dialogPhase == "start" or $dialogPhase == "">>
+    <<jump Start_Ryoma>>
+<<elseif $dialogPhase == "quest_taken">>
+    <<jump Quest_Taken_Ryoma>>
+<<elseif $dialogPhase == "quest_taken2">>
+    <<jump Quest_Taken_Ryoma2>>
+<<elseif $dialogPhase == "quest_taken_return">>
+    <<jump Quest_Taken_Return_Ryoma>>
+<<elseif $dialogPhase == "quest_complete">>
+    <<jump Quest_Complete_Ryoma>>
+<<elseif $dialogPhase == "quest_complete_return">>
+    <<jump Quest_Complete_Return_Ryoma>>
+<<else>>
+    Ryoma: What the. The current phase: {$dialogPhase} . Do your job bro.
+<<endif>>
+===
+
+title: Start_Ryoma
+---
+<<set $visitedYetRyoma = true>>
+???: ......
+???: ......
+???: ...... ...... ......
+<<cam_move NPC_Cam_Rig "NPC">>
+???: ...what are you looking at? Who even are you? 
+    -> Just passing by.
+        ???: Ah, I see.
+        ???: Then why don't you go back out where you came from?
+        ???: I'm not interested in dealing with an intruder...
+            -> Don't be so clumsy, boy.
+                ???: ...not in a mood to listen to the intruder...
+                ???: Whatever. You're already in my home. What can I do.
+                Ryoma: I'm Ryoma...I live here with my older brother.
+                Ryoma: ... *yawn*.
+                    -> Are you bored?
+                        Ryoma: ...kind of.
+                        Ryoma: If I can play tennis with Ralph...
+                            -> Can't you play it then?
+                                <<jump Start_Ryoma_2>>
+                                <<cam_move NPC_Cam_Rig "return">>
+                            -> Leave.    
+                                <<cam_move NPC_Cam_Rig "return">>               
+===
+
+title: Start_Ryoma_2
+---
+Ryoma: ...I can't.
+Ryoma: You'll need some tennis balls to play tennis, don't ya think?
+Ryoma: I have my balls...locked up in the closet over there.
+Ryoma: The closet has a lock with a password...but I forgot them.
+Ryoma: They're stored in my pc on my desk tho.
+    -> Why can't you just go up to your pc and check it on?
+        Ryoma: Hey, this bed is too comfortable for me to wake up.
+        Ryoma: Unless you pick up the tennis balls for me...
+        Ryoma: I can show you what 'true tennis' is.
+            -> ...fine. Let me do it for you.
+                Ryoma: Actually? Hmm...not bad.
+                <<set $dialogPhase = "quest_taken">>
+                <<dialogPhaseGetter2 NPC "quest_taken">>
+                <<cam_move NPC_Cam_Rig "return">>
+            -> Ignore and leave.
+                Ryoma: Hmm...then why'd you came up to me then?
+                Ryoma: You still have lots to work on...your behavior, as a human being.
+                <<cam_move NPC_Cam_Rig "return">>
+===
+
+title: Quest_Taken_Ryoma
+---
+<<cam_move NPC_Cam_Rig "NPC">>
+Ryoma: The password for the closet lock is written in the pc.
+Ryoma: ...don't make me repeat twice. It's annoying.
+    -> Does the pc also have password?
+        Ryoma: Oh. Right...
+        Ryoma: Just realized...the pc is my brother's, so I actually don't know about that one.
+            -> Who else knows about the pc password?
+                Ryoma: Probably Ralph...? I saw him logging into Ryoga's pc for his school work a few times.
+                Ryoma: Oh, Ryoga's my brother's name by the way.
+                <<set $dialogPhase = "quest_taken2">>
+                <<dialogPhaseGetter2 NPC "quest_taken2">>
+                <<updateRalphPhase NPC "quest_taken">>
+                <<cam_move NPC_Cam_Rig "return">>
+            -> Then how do you know about that...?
+                Ryoma: Why not? I live here. I see what my brother does.
+                <<cam_move NPC_Cam_Rig "return">>
+    -> Got it.
+        <<cam_move NPC_Cam_Rig "return">>
+===
+
+title: Quest_Taken_Ryoma2
+---
+Ryoma: So...did you tried opening the closet?
+===
+
+title: Quest_Complete_Ryoma
+---
+<<cam_move NPC_Cam_Rig "NPC">>
+<<dialogPhaseGetter2 NPC "quest_complete">>
+<<updateRalphPhase NPC "quest_complete">>
+Ryoma: You actually got me this...
+Ryoma: Hmm, not bad at all.
+    -> At least can I have a 'thank you'?
+        Ryoma: Alright, alright......thanks a lot.
+        Ryoma: As promised, I'll go out and show you the 'true tennis'.
+        <<dialogPhaseGetter2 NPC "quest_complete_return">>
+        <<cam_move NPC_Cam_Rig "return">>
+===
+
+title: Quest_Taken_Return_Ryoma
+---
+<<cam_move NPC_Cam_Rig "NPC">>
+Ryoma: Did you find the code in the PC yet?
+Ryoma: Unlock the closet and bring me the tennis balls.
+<<cam_move NPC_Cam_Rig "return">>
+===
+
+title: Quest_Complete_Return_Ryoma
+---
+<<cam_move NPC_Cam_Rig "NPC">>
+Ryoma: ...what.
+Ryoma: Do you still have something to do?
+    -> Is it true that you were a pro tennis player?
+        Ryoma: Uh...kind of.
+        Ryoma: I played first for team US...then changed to team Japan.
+        Ryoma: Everyone worked hard to beat against Spain.
+        <<cam_move NPC_Cam_Rig "return">>
+    -> I heard you went from team US to Japan in the U-17 tornament.
+        Ryoma: ......
+        Ryoma: It's not that I didn't like the team. Ralph is a pretty nice guy.
+        Ryoma: Just...I wasn't sure where I actually belong.
+        Ryoma: Then Ralph told me to follow where my heart went, so I joined team Japan.
+        <<cam_move NPC_Cam_Rig "return">>
+    -> Who's Ryoga?
+        Ryoma: He's pretty annoying, loud, but kinda cool and daring guy.
+        Ryoma: All he does is teasing me and runnig away...
+        Ryoma: Playing and winning against him in tennis...that's my ultimate goal.
+        <<cam_move NPC_Cam_Rig "return">>
+    -> Nothing, bye.
+        Ryoma: ...see ya in the court, then.
+        <<cam_move NPC_Cam_Rig "return">>
+===
